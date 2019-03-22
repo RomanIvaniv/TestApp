@@ -16,6 +16,7 @@
 		3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */; };
 		3D82A6C12245224C00C05ADB /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6BF2245224C00C05ADB /* MovieTableViewCell.swift */; };
 		3D82A6C22245224C00C05ADB /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D82A6C02245224C00C05ADB /* MovieTableViewCell.xib */; };
+		3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewController.swift; sourceTree = "<group>"; };
 		3D82A6BF2245224C00C05ADB /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		3D82A6C02245224C00C05ADB /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				3D82A68F2245209000C05ADB /* AppDelegate.swift */,
 				3D82A6C32245225400C05ADB /* MovieCell */,
+				3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */,
 				3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */,
 				3D82A6932245209000C05ADB /* Main.storyboard */,
 				3D82A6962245209200C05ADB /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */,
 				3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */,
 				3D82A6902245209000C05ADB /* AppDelegate.swift in Sources */,
 				3D82A6C12245224C00C05ADB /* MovieTableViewCell.swift in Sources */,
