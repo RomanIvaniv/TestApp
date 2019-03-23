@@ -10,7 +10,7 @@ target 'TestApp' do
   target 'TestAppTests' do
     inherit! :search_paths
 
-  pod 'Moya', '~> 12.0'
+  pod 'Moya'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
 

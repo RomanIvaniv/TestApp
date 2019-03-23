@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D16D3DD2246271A00875347 /* MovieDatabaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D16D3DC2246271A00875347 /* MovieDatabaseAPI.swift */; };
 		3D82A6902245209000C05ADB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A68F2245209000C05ADB /* AppDelegate.swift */; };
 		3D82A6952245209000C05ADB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D82A6932245209000C05ADB /* Main.storyboard */; };
 		3D82A6972245209200C05ADB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D82A6962245209200C05ADB /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		001905B9873C489004D6E15A /* Pods_TestAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10CD001CBDE54C1075983463 /* Pods-TestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAppTests/Pods-TestAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D16D3DC2246271A00875347 /* MovieDatabaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDatabaseAPI.swift; sourceTree = "<group>"; };
 		3D82A68C2245209000C05ADB /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D82A68F2245209000C05ADB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D82A6942245209000C05ADB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		3D16D3D92246240200875347 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				3D16D3DE2246272000875347 /* Network */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -157,6 +160,14 @@
 				3D82A69B2245209200C05ADB /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3D16D3DE2246272000875347 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3D16D3DC2246271A00875347 /* MovieDatabaseAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		3D82A6832245209000C05ADB = {
@@ -469,6 +480,7 @@
 				3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */,
 				3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */,
 				3D82A6902245209000C05ADB /* AppDelegate.swift in Sources */,
+				3D16D3DD2246271A00875347 /* MovieDatabaseAPI.swift in Sources */,
 				3D82A6C12245224C00C05ADB /* MovieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PU5UQR5U2;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = TestApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -666,7 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7PU5UQR5U2;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = TestApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
