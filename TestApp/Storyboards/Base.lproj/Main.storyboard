@@ -104,7 +104,7 @@
                                                 </state>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vPJ-s2-D0u">
-                                                <rect key="frame" x="12" y="372" width="351" height="219"/>
+                                                <rect key="frame" x="12" y="372" width="351" height="174"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="McW-ph-HWj">
                                                         <rect key="frame" x="0.0" y="0.0" width="351" height="36"/>
@@ -153,7 +153,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="drM-s5-chP">
-                                                        <rect key="frame" x="0.0" y="102" width="351" height="117"/>
+                                                        <rect key="frame" x="0.0" y="102" width="351" height="72"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uC2-uk-2bc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="18"/>
@@ -165,8 +165,8 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An3-9d-UaT">
-                                                                <rect key="frame" x="0.0" y="18" width="351" height="99"/>
-                                                                <mutableString key="text">I haven’t played much with changing my layout for different rotations / screens, so this is definitely a good thing to keep in mind. It doesn’t sound as fun to have to manually completely change AutoLayout for different compression sizes, especially when a product manager asks you to insert “just one small thing” in there… Thx again @atomicbird for sharing this small but very powerful trick with us!I haven’t played much with changing my layout for different rotations / screens, so this is definitely a good thing to keep in mind. It doesn’t sound as fun to have to manually completely change AutoLayout for different compression sizes, especially when a product manager asks you to insert “just one small thing” in there… Thx again @atomicbird for sharing this small but very powerful trick with us!</mutableString>
+                                                                <rect key="frame" x="0.0" y="18" width="351" height="54"/>
+                                                                <string key="text">I haven’t played much with changing my layout for different rotations / screens, so this is definitely a good thing to keep in mind. </string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -188,7 +188,6 @@
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" id="7sV-fP-Ojj"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="leading" secondItem="aju-8I-qza" secondAttribute="leading" id="7za-bj-8wM"/>
                                             <constraint firstItem="aju-8I-qza" firstAttribute="top" secondItem="gCx-5t-5yg" secondAttribute="bottom" constant="8" id="Ak6-mq-k7k"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vPJ-s2-D0u" secondAttribute="bottom" constant="12" id="C5o-s0-ft1"/>
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="height" secondItem="7Wr-mO-Bkr" secondAttribute="height" multiplier="0.4" id="CEt-jH-RNf"/>
                                             <constraint firstItem="vPJ-s2-D0u" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" constant="12" id="EEq-e5-xcy"/>
                                             <constraint firstItem="aju-8I-qza" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" constant="12" id="Gga-xr-4gO"/>

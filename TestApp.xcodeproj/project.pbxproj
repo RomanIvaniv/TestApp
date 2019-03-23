@@ -108,6 +108,57 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3D16D3D6224623B000875347 /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3D82A68F2245209000C05ADB /* AppDelegate.swift */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		3D16D3D7224623BB00875347 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3D82A6C32245225400C05ADB /* MovieCell */,
+				3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */,
+				3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3D16D3D8224623D200875347 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		3D16D3D92246240200875347 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		3D16D3DA2246241000875347 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3D82A6932245209000C05ADB /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3D16D3DB2246243100875347 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D82A6962245209200C05ADB /* Assets.xcassets */,
+				3D82A6982245209200C05ADB /* LaunchScreen.storyboard */,
+				3D82A69B2245209200C05ADB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		3D82A6832245209000C05ADB = {
 			isa = PBXGroup;
 			children = (
@@ -133,14 +184,12 @@
 		3D82A68E2245209000C05ADB /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				3D82A68F2245209000C05ADB /* AppDelegate.swift */,
-				3D82A6C32245225400C05ADB /* MovieCell */,
-				3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */,
-				3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */,
-				3D82A6932245209000C05ADB /* Main.storyboard */,
-				3D82A6962245209200C05ADB /* Assets.xcassets */,
-				3D82A6982245209200C05ADB /* LaunchScreen.storyboard */,
-				3D82A69B2245209200C05ADB /* Info.plist */,
+				3D16D3D6224623B000875347 /* ApplicationLayer */,
+				3D16D3D92246240200875347 /* CoreLayer */,
+				3D16D3D7224623BB00875347 /* Modules */,
+				3D16D3D8224623D200875347 /* Helpers */,
+				3D16D3DA2246241000875347 /* Storyboards */,
+				3D16D3DB2246243100875347 /* Resources */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
