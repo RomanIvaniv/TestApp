@@ -14,7 +14,6 @@ private let strBaseURL = "https://api.themoviedb.org/3/movie"
 
 enum MovieDatabaseAPI {
     case movieList
-
 }
 
 // MARK: - Provider support
@@ -27,7 +26,7 @@ extension MovieDatabaseAPI: TargetType {
     var path: String {
         switch self {
         case .movieList:
-            return "/popular?api_key=​\(apiKey)"
+            return "/popular"
         }
     }
 
@@ -39,9 +38,11 @@ extension MovieDatabaseAPI: TargetType {
     }
 
     var task: Task {
+        let apiKeyParam = ["api_key": apiKey]
+        
         switch self {
         case .movieList:
-            return .requestPlain
+            return .requestParameters(parameters: apiKeyParam, encoding: URLEncoding.default)
         }
     }
 
@@ -50,6 +51,10 @@ extension MovieDatabaseAPI: TargetType {
         case .movieList:
             return ["Content-Type": "application/json"]
         }
+    }
+    
+    var validate: Bool {
+        return true
     }
     
     var sampleData: Data {
