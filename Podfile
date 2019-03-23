@@ -7,14 +7,9 @@ target 'TestApp' do
 
   # Pods for TestApp
 
-  target 'TestAppTests' do
-    inherit! :search_paths
-
   pod 'Moya'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
-
-  end
 
   target 'TestAppUITests' do
     inherit! :search_paths
