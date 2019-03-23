@@ -10,11 +10,13 @@ PODS:
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - SVProgressHUD (2.2.5)
+  - YoutubeDirectLinkExtractor (0.2.0)
 
 DEPENDENCIES:
   - Moya
   - SDWebImage
   - SVProgressHUD
+  - YoutubeDirectLinkExtractor
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Result
     - SDWebImage
     - SVProgressHUD
+    - YoutubeDirectLinkExtractor
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  YoutubeDirectLinkExtractor: 068b6a09d64551cb7cec966179d7f5f5824cd2db
 
-PODFILE CHECKSUM: 62cacea96591923a4d163198d114f1128d92613b
+PODFILE CHECKSUM: 8bb429e320d21654639efb0f2318e444bdeabdaa
 
 COCOAPODS: 1.5.3

@@ -62,12 +62,30 @@ class MoviesListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
 
+        cell.tag = indexPath.row
+
         let movie = movies[indexPath.row]
         cell.textLabel?.text = movie.title
-        cell.imageView?.sd_setImage(with: movie.imageURL, placeholderImage: nil, completed: nil)
+        cell.imageView?.sd_setImage(with: movie.imageURL, placeholderImage: #imageLiteral(resourceName: "movie_placeholder"))
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let detailVC = segue.destination as? MovieDetailViewController, let cell = sender as? UITableViewCell {
+            detailVC.movie = movies[cell.tag]
+        }
+     
+    }
+    
    
 }
 

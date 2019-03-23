@@ -10,6 +10,7 @@ target 'TestApp' do
   pod 'Moya'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
+  pod 'YoutubeDirectLinkExtractor'
 
   target 'TestAppUITests' do
     inherit! :search_paths

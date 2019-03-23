@@ -10,10 +10,13 @@ import Moya
 import Foundation
 
 private let apiKey = "628a9c80740fccbc8a67ce27b3e07930"
-private let strBaseURL = "https://api.themoviedb.org/3/movie"
+private let strBaseURL = "https://api.themoviedb.org/3"
 
 enum MovieDatabaseAPI {
     case movieList
+    case movieDetail(Int)
+    case movieTrailer(Int)
+
 }
 
 // MARK: - Provider support
@@ -26,31 +29,24 @@ extension MovieDatabaseAPI: TargetType {
     var path: String {
         switch self {
         case .movieList:
-            return "/popular"
+            return "/movie/popular"
+        case .movieDetail(let identifier):
+            return "/movie/\(identifier)"
+        case .movieTrailer(let identifier):
+            return "/movie/\(identifier)/videos"
         }
     }
 
     var method: Moya.Method {
-        switch self {
-        case .movieList:
-            return .get
-        }
+        return .get
     }
 
     var task: Task {
-        let apiKeyParam = ["api_key": apiKey]
-        
-        switch self {
-        case .movieList:
-            return .requestParameters(parameters: apiKeyParam, encoding: URLEncoding.default)
-        }
+        return .requestParameters(parameters: ["api_key": apiKey], encoding: URLEncoding.default)
     }
 
     var headers: [String : String]? {
-        switch self {
-        case .movieList:
-            return ["Content-Type": "application/json"]
-        }
+        return ["Content-Type": "application/json"]
     }
     
     var validate: Bool {

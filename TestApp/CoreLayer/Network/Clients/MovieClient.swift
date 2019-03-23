@@ -19,12 +19,48 @@ struct MovieClient: MovieService {
                 }
                 var movies = [MovieListItem]()
                 if let items = resp["results"] as? [[String: Any]] {
-                    items.forEach {
-                        let movie = MovieListItem(title: $0["title"] as? String, imagePath: $0["poster_path"] as? String)
-                        movies.append(movie)
-                    }
+                    items.forEach { movies.append(MovieListItem(data: $0)) }
                 }
                 completion(movies, nil)
+            })
+        }
+    }
+    
+    func movieDatail(for movie: MovieListItem, completion: @escaping RequestCompletion) {
+        MoviewProvider.request(.movieDetail(movie.uniqueID!)) { (result) in
+            ResponseHandler.handle(result: result, completion: { (dict, error) in
+                guard let resp = dict else {
+                    completion(nil, error!)
+                    return
+                }
+                var mutatedMovie = movie
+                if let genresItems = resp["genres"] as? [[String: Any]] {
+                    let genresNames = genresItems.map { $0["name"] as? String ?? ""}
+                    mutatedMovie.genres = genresNames
+                }
+                completion(mutatedMovie, nil)
+            })
+        }
+    }
+    
+    func movieTrailers(for movie: MovieListItem, completion: @escaping RequestCompletion) {
+        MoviewProvider.request(.movieTrailer(movie.uniqueID!)) { (result) in
+            ResponseHandler.handle(result: result, completion: { (dict, error) in
+                guard let resp = dict else {
+                    completion(nil, error!)
+                    return
+                }
+                var trailers = [String]()
+                if let genresItems = resp["results"] as? [[String: Any]] {
+                    genresItems.forEach {
+                        if let key = $0["key"] as? String, let site =  $0["site"] as? String, site == "YouTube" {
+                            let baseYoutube = "https://www.youtube.com/watch?v="
+                            let path = baseYoutube + key
+                            trailers.append(path)
+                        }
+                    }
+                }
+                completion(trailers, nil)
             })
         }
     }

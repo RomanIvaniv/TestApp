@@ -32,17 +32,17 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z31-tN-kwA" id="jGB-O2-pAL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DyF-bL-z2w">
-                                            <rect key="frame" x="111" y="0.0" width="248" height="79.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DyF-bL-z2w">
+                                            <rect key="frame" x="158" y="0.0" width="201" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="images" id="b2T-nu-nlF">
-                                            <rect key="frame" x="16" y="0.0" width="80" height="79.5"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="movie_placeholder" id="b2T-nu-nlF">
+                                            <rect key="frame" x="16" y="0.0" width="127" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -102,6 +102,9 @@
                                                 <state key="normal" title="Watch Trailer">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="watchTrailerAction:" destination="m6a-eW-Yde" eventType="touchUpInside" id="x1O-va-qFp"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vPJ-s2-D0u">
                                                 <rect key="frame" x="12" y="372" width="351" height="174"/>
@@ -118,7 +121,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action..." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boM-Kh-gsD">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boM-Kh-gsD">
                                                                 <rect key="frame" x="0.0" y="18" width="351" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="SbR-gx-GIf"/>
@@ -221,6 +224,13 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Movie Detail" id="wfW-tX-Ute"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="KIF-qk-7Uw" id="llL-Sk-kjB"/>
+                        <outlet property="genreLabel" destination="boM-Kh-gsD" id="5Vs-wA-a4u"/>
+                        <outlet property="iconImageView" destination="gCx-5t-5yg" id="k52-oi-1gx"/>
+                        <outlet property="overviewLabel" destination="An3-9d-UaT" id="U5I-yG-LsZ"/>
+                        <outlet property="titleLabel" destination="aju-8I-qza" id="o7g-yS-X5F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JF-vG-WNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,6 +256,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="images" width="225" height="225"/>
+        <image name="movie_placeholder" width="192" height="120"/>
     </resources>
 </document>

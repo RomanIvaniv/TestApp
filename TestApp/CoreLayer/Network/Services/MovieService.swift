@@ -11,5 +11,7 @@ import Foundation
 protocol MovieService {
 
     func movieList(completion: @escaping RequestCompletion)
-
+    func movieDatail(for movie: MovieListItem, completion: @escaping RequestCompletion)
+    func movieTrailers(for movie: MovieListItem, completion: @escaping RequestCompletion)
+    
 }
