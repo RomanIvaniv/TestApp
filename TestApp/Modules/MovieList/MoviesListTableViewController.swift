@@ -17,42 +17,19 @@ class MoviesListTableViewController: UITableViewController {
     
     @IBOutlet weak var headerSearchBar: UISearchBar!
     
-    let movieService: MovieService = MovieClient()
-    
-    var movies = [MovieListItem]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    fileprivate var showSearchResult: Bool {
-        guard let text = headerSearchBar.text else {
-            return false
-        }
-        return !text.isEmpty
-    }
+    let presenter = MovieListPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SVProgressHUD.show()
-        movieService.movieList { (result, error) in
-            SVProgressHUD.dismiss()
-            guard let items = result as? [MovieListItem] else {
-                //show error
-                return
-            }
-            self.movies = items
-        }
-
-        tableView.setContentOffset(CGPoint(x: 0, y: headerSearchBar.frame.height), animated: false)
+        presenter.attachView(view: self)
+        presenter.loadData()
     }
     
     // MARK: - Table view data source
 
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return presenter.visibleItemCount
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,30 +39,23 @@ class MoviesListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
 
+        let movie = presenter.movie(for: indexPath.row)
+        
         cell.tag = indexPath.row
-
-        let movie = movies[indexPath.row]
         cell.textLabel?.text = movie.title
         cell.imageView?.sd_setImage(with: movie.imageURL, placeholderImage: #imageLiteral(resourceName: "movie_placeholder"))
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if headerSearchBar.isFirstResponder { headerSearchBar.deactivate() }
         if let detailVC = segue.destination as? MovieDetailViewController, let cell = sender as? UITableViewCell {
-            detailVC.movie = movies[cell.tag]
+            detailVC.movie = presenter.movie(for: cell.tag)
         }
-     
     }
-    
    
 }
 
@@ -97,6 +67,7 @@ extension MoviesListTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         searchBar.deactivate()
+        presenter.removeSearchResultData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -105,14 +76,30 @@ extension MoviesListTableViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //filter data
+        presenter.updateSearchResult(for: searchText)
     }
 }
 
-//create some helper file
-extension UISearchBar {
-    func deactivate(animated: Bool = true) {
-        resignFirstResponder()
-        setShowsCancelButton(false, animated: animated)
+extension MoviesListTableViewController: MovieListView {
+    var searchedText: String? {
+        return headerSearchBar.text
     }
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    func showLoaderIndicator() {
+        SVProgressHUD.show()
+    }
+    
+    func hideLoaderIndicator() {
+        SVProgressHUD.dismiss()
+    }
+    
+    func showError(with message: String?) {
+        AlertController.showErrorAlert(with: message, target: self)
+    }
+    
 }
+

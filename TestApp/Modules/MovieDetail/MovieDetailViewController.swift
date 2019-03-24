@@ -10,6 +10,7 @@ import UIKit
 
 import AVKit
 import AVFoundation
+import YoutubeDirectLinkExtractor
 
 class MovieDetailViewController: UIViewController {
     
@@ -23,12 +24,10 @@ class MovieDetailViewController: UIViewController {
     
     let movieService: MovieService = MovieClient()
 
-    var player: AVPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         
         setupUI()
         
@@ -48,27 +47,25 @@ class MovieDetailViewController: UIViewController {
     }
     
     
-    
     @IBAction func watchTrailerAction(_ sender: UIButton) {
         //play first from list
-        
         
         movieService.movieTrailers(for: movie) { (items, error) in
             guard let trailers = items as? [String], let firstTrailer = trailers.first else {
                 return
             }
-            
-            DispatchQueue.main.async {
-                let url = URL(string: firstTrailer)!
-
-                self.player = AVPlayer(url: url)
-                let vc = AVPlayerViewController()
-                vc.player = self.player
-
-                vc.player?.play()
-
-                self.present(vc, animated: true) {
+        
+            let y = YoutubeDirectLinkExtractor()
+            y.extractInfo(for: .urlString(firstTrailer), success: { info in
+                let player = AVPlayer(url: URL(string: info.highestQualityPlayableLink!)!)
+                let playerViewController = AVPlayerViewController()
+                playerViewController.player = player
+                
+                self.present(playerViewController, animated: true) {
+                    playerViewController.player!.play()
                 }
+            }) { error in
+                print(error)
             }
             
         }
