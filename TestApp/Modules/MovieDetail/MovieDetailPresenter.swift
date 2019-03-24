@@ -73,6 +73,7 @@ class MovieDetailPresenter {
             youtubeExtractor.extractInfo(for: .urlString(firstTrailer), success: { info in
                 self.detailView?.hideActivityIndicator(for: .trailers)
                 guard let link = info.highestQualityPlayableLink, let url = URL(string: link) else {
+                    self.detailView?.hideActivityIndicator(for: .trailers)
                     self.detailView?.showError(with: "Can't obtain trailer url")
                     return
                 }

@@ -30,6 +30,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var trailerActivityIndicator: UIActivityIndicatorView!
     
     let presenter = MovieDetailPresenter()
+    
+    lazy var playerViewController = AVPlayerViewController()
 
     var movie: MovieItem? {
         didSet {
@@ -48,6 +50,8 @@ class MovieDetailViewController: UIViewController {
         updateUI()
         presenter.attachView(view: self)
         presenter.loadDetail(for: movie)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(closePlayer), name: .AVPlayerItemDidPlayToEndTime, object: nil)
     }
     
     func updateUI() {
@@ -61,7 +65,7 @@ class MovieDetailViewController: UIViewController {
         iconImageView.sd_setImage(with: movie?.imageURL, placeholderImage: #imageLiteral(resourceName: "bike"))
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func watchTrailerAction(_ sender: UIButton) {
         guard let movie = movie else { return }
@@ -72,12 +76,22 @@ class MovieDetailViewController: UIViewController {
         presenter.downloadTrailer(for: movie)
     }
     
+    // MARK: - Notifications
+    
+    @objc func closePlayer() {
+        DispatchQueue.main.async {
+            self.playerViewController.dismiss(animated: true)
+        }
+    }
+    
 }
 
 extension MovieDetailViewController: MovieDetailView {
     
     func updateNavBarItem() {
-        downloadBarButton.isEnabled = !presenter.hasLocalTrailer(for: movie)
+        DispatchQueue.main.async {
+            self.downloadBarButton.isEnabled = !self.presenter.hasLocalTrailer(for: self.movie)
+        }
     }
     
     func setMovie(_ movie: MovieItem) {
@@ -101,31 +115,36 @@ extension MovieDetailViewController: MovieDetailView {
     }
     
     func playTrailer(url: URL) {
-        let player = AVPlayer(url:url)
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        present(playerViewController, animated: true) {
-            playerViewController.player!.play()
+        DispatchQueue.main.async {
+            let player = AVPlayer(url:url)
+            self.playerViewController.player = player
+            self.present(self.playerViewController, animated: true) {
+                self.playerViewController.player!.play()
+            }
         }
     }
     
     func showActivityIndicator(for type: ActivityIndicatorType) {
-        switch type {
-        case .genres:
-            genresActivityIndicator.startAnimating()
-        case .trailers:
-            trailerButton.isEnabled = false
-            trailerActivityIndicator.startAnimating()
+        DispatchQueue.main.async {
+            switch type {
+            case .genres:
+                self.genresActivityIndicator.startAnimating()
+            case .trailers:
+                self.trailerButton.isEnabled = false
+                self.trailerActivityIndicator.startAnimating()
+            }
         }
     }
     
     func hideActivityIndicator(for type: ActivityIndicatorType) {
-        switch type {
-        case .genres:
-            genresActivityIndicator.stopAnimating()
-        case .trailers:
-            trailerButton.isEnabled = true
-            trailerActivityIndicator.stopAnimating()
+        DispatchQueue.main.async {
+            switch type {
+            case .genres:
+                self.genresActivityIndicator.stopAnimating()
+            case .trailers:
+                self.trailerButton.isEnabled = true
+                self.trailerActivityIndicator.stopAnimating()
+            }
         }
     }
         
