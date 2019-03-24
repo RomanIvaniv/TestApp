@@ -8,10 +8,16 @@
 
 import UIKit
 
-class AlertController {
+struct AlertController {
     
-    class func showErrorAlert(with message: String?, target: UIViewController) {
+    static func showErrorAlert(with message: String?, target: UIViewController) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        target.present(alert, animated: true, completion: nil)
+    }
+    
+    static func showAlert(title: String?, message: String?, target: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         target.present(alert, animated: true, completion: nil)
     }

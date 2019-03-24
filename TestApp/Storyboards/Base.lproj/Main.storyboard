@@ -95,7 +95,7 @@
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tEC-2f-2Pz">
                                                 <rect key="frame" x="197" y="416.66666666666669" width="20" height="20"/>
                                             </activityIndicatorView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCx-5t-5yg">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCx-5t-5yg">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="268.66666666666669"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aju-8I-qza">
@@ -245,9 +245,16 @@
                         <viewLayoutGuide key="safeArea" id="H2e-pc-xGE"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Movie Detail" id="wfW-tX-Ute"/>
+                    <navigationItem key="navigationItem" title="Movie Detail" id="wfW-tX-Ute">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="download" id="hFV-8j-izd">
+                            <connections>
+                                <action selector="downloadBtnAction:" destination="m6a-eW-Yde" id="gge-2f-Obu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="KIF-qk-7Uw" id="llL-Sk-kjB"/>
+                        <outlet property="downloadBarButton" destination="hFV-8j-izd" id="upe-zP-HZD"/>
                         <outlet property="genreLabel" destination="boM-Kh-gsD" id="5Vs-wA-a4u"/>
                         <outlet property="genresActivityIndicator" destination="tEC-2f-2Pz" id="lHF-Kb-fQv"/>
                         <outlet property="iconImageView" destination="gCx-5t-5yg" id="k52-oi-1gx"/>
@@ -314,6 +321,7 @@
     </scenes>
     <resources>
         <image name="bike" width="54" height="80"/>
+        <image name="download" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SQ-Jt-Pqj"/>

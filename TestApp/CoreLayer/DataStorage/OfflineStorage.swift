@@ -9,6 +9,7 @@
 import Foundation
 
 private let movieListKey = "MovieList"
+private let baseDocsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 
 struct OfflineStorage {
     
@@ -22,6 +23,27 @@ struct OfflineStorage {
         }
         let movies = MovieItem.createMovies(from: data)
         return movies
+    }
+    
+    static func saveTrailer(for movieID: Int, with url: URL, complation:@escaping (Bool) -> ()) {
+        DispatchQueue.global(qos: .background).async {
+            let urlData = NSData(contentsOf: url)!
+            let filePath="\(baseDocsPath)/\(movieID).mp4"
+            let success = urlData.write(toFile: filePath, atomically: true)
+            DispatchQueue.main.async {
+                complation(success)
+            }
+        }
+    }
+    
+    static func loadTrailerURL(for movieID: Int) -> URL? {
+        let filePath = "\(baseDocsPath)/\(movieID).mp4"
+        return URL(fileURLWithPath: filePath)
+    }
+    
+    static func hasTrailer(for movieID: Int) -> Bool {
+        let filePath = "\(baseDocsPath)/\(movieID).mp4"
+        return FileManager.default.fileExists(atPath: filePath)
     }
     
 }

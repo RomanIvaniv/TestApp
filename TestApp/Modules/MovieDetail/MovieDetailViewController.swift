@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import SVProgressHUD
 
 enum ActivityIndicatorType {
     case genres
@@ -24,6 +25,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var trailerButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var downloadBarButton: UIBarButtonItem!
     @IBOutlet weak var genresActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var trailerActivityIndicator: UIActivityIndicatorView!
     
@@ -49,24 +51,34 @@ class MovieDetailViewController: UIViewController {
     }
     
     func updateUI() {
-        scrollView.isHidden = !hasMovie
+        scrollView.isHidden = !hasMovie //hide while no data (for iPad)
         
         titleLabel.text = movie?.title
         dateLabel.text = movie?.releaseData
         overviewLabel.text = movie?.overview
         genreLabel.text = movie?.genres?.joined(separator: ", ")
+        downloadBarButton.isEnabled = !presenter.hasLocalTrailer(for: movie)
         iconImageView.sd_setImage(with: movie?.imageURL, placeholderImage: #imageLiteral(resourceName: "bike"))
     }
     
     //MARK: - Actions
     
     @IBAction func watchTrailerAction(_ sender: UIButton) {
-        presenter.loadTrailers(for: movie)
+        guard let movie = movie else { return }
+        presenter.watchTrailer(for: movie)
     }
-
+    
+    @IBAction func downloadBtnAction(_ sender: UIBarButtonItem) {
+        presenter.downloadTrailer(for: movie)
+    }
+    
 }
 
 extension MovieDetailViewController: MovieDetailView {
+    
+    func updateNavBarItem() {
+        downloadBarButton.isEnabled = !presenter.hasLocalTrailer(for: movie)
+    }
     
     func setMovie(_ movie: MovieItem) {
         self.movie = movie
@@ -74,6 +86,18 @@ extension MovieDetailViewController: MovieDetailView {
     
     func showError(with message: String?) {
         AlertController.showErrorAlert(with: message, target: self)
+    }
+    
+    func showAlert(title: String?, message: String?) {
+        AlertController.showAlert(title: title, message: message, target: self)
+    }
+    
+    func hideLoaderIndicator() {
+        SVProgressHUD.dismiss()
+    }
+    
+    func showLoaderIndicator(with message: String?) {
+        SVProgressHUD.show(withStatus: message)
     }
     
     func playTrailer(url: URL) {
