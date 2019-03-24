@@ -11,7 +11,7 @@ import Foundation
 private let imageSize = 342 //"w92", "w154", "w185", "w342", "w500", "w780"
 private let baseImagePath = "http://image.tmdb.org/t/p/w\(imageSize)"
 
-struct MovieListItem {
+struct MovieItem {
     var uniqueID: Int?
     var title: String?
     var overview: String?

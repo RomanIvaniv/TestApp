@@ -18,12 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="WSq-RD-Zpu" userLabel="HeaderContainer">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="WSq-RD-Zpu" userLabel="HeaderContainer">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-Ki-0gc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="niE-pL-XMu" id="UIN-x0-4g6"/>
@@ -92,6 +92,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Wr-mO-Bkr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tEC-2f-2Pz">
+                                                <rect key="frame" x="197" y="416.66666666666669" width="20" height="20"/>
+                                            </activityIndicatorView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCx-5t-5yg">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="268.66666666666669"/>
                                             </imageView>
@@ -114,6 +117,7 @@
                                                 <state key="normal" title="Watch Trailer">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <state key="disabled" title=" "/>
                                                 <connections>
                                                     <action selector="watchTrailerAction:" destination="m6a-eW-Yde" eventType="touchUpInside" id="x1O-va-qFp"/>
                                                 </connections>
@@ -196,19 +200,26 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="HHu-S8-wYz">
+                                                <rect key="frame" x="197" y="349.66666666666669" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="gCx-5t-5yg" secondAttribute="trailing" id="55T-3y-sme"/>
+                                            <constraint firstItem="tEC-2f-2Pz" firstAttribute="centerX" secondItem="boM-Kh-gsD" secondAttribute="centerX" id="7o1-U3-quR"/>
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" id="7sV-fP-Ojj"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="leading" secondItem="aju-8I-qza" secondAttribute="leading" id="7za-bj-8wM"/>
                                             <constraint firstItem="aju-8I-qza" firstAttribute="top" secondItem="gCx-5t-5yg" secondAttribute="bottom" constant="8" id="Ak6-mq-k7k"/>
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="height" secondItem="7Wr-mO-Bkr" secondAttribute="height" multiplier="0.4" id="CEt-jH-RNf"/>
                                             <constraint firstItem="vPJ-s2-D0u" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" constant="12" id="EEq-e5-xcy"/>
                                             <constraint firstItem="aju-8I-qza" firstAttribute="leading" secondItem="7Wr-mO-Bkr" secondAttribute="leading" constant="12" id="Gga-xr-4gO"/>
+                                            <constraint firstItem="tEC-2f-2Pz" firstAttribute="centerY" secondItem="boM-Kh-gsD" secondAttribute="centerY" id="JDx-xC-5vJ"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="trailing" secondItem="aju-8I-qza" secondAttribute="trailing" id="KL5-na-fOe"/>
                                             <constraint firstAttribute="trailing" secondItem="aju-8I-qza" secondAttribute="trailing" constant="12" id="ROL-iM-sjg"/>
+                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="centerY" secondItem="6Eo-Nb-YbO" secondAttribute="centerY" id="RTB-Kl-6PB"/>
                                             <constraint firstAttribute="trailing" secondItem="vPJ-s2-D0u" secondAttribute="trailing" constant="12" id="Vyd-Aa-Myt"/>
+                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="centerX" secondItem="6Eo-Nb-YbO" secondAttribute="centerX" id="fPj-oM-5bH"/>
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="top" secondItem="7Wr-mO-Bkr" secondAttribute="top" id="l2f-eJ-DH6"/>
                                             <constraint firstItem="vPJ-s2-D0u" firstAttribute="top" secondItem="6Eo-Nb-YbO" secondAttribute="bottom" constant="15" id="mIy-Qu-9lU"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="top" secondItem="aju-8I-qza" secondAttribute="bottom" constant="8" id="wfe-Ns-eP7"/>
@@ -239,9 +250,13 @@
                     <connections>
                         <outlet property="dateLabel" destination="KIF-qk-7Uw" id="llL-Sk-kjB"/>
                         <outlet property="genreLabel" destination="boM-Kh-gsD" id="5Vs-wA-a4u"/>
+                        <outlet property="genresActivityIndicator" destination="tEC-2f-2Pz" id="lHF-Kb-fQv"/>
                         <outlet property="iconImageView" destination="gCx-5t-5yg" id="k52-oi-1gx"/>
                         <outlet property="overviewLabel" destination="An3-9d-UaT" id="U5I-yG-LsZ"/>
+                        <outlet property="scrollView" destination="fnf-nR-rn1" id="cgX-vS-RGc"/>
                         <outlet property="titleLabel" destination="aju-8I-qza" id="o7g-yS-X5F"/>
+                        <outlet property="trailerActivityIndicator" destination="HHu-S8-wYz" id="EOO-Ac-FWY"/>
+                        <outlet property="trailerButton" destination="6Eo-Nb-YbO" id="Ouu-uI-oVY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JF-vG-WNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,7 +284,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="t7t-YD-iAV">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

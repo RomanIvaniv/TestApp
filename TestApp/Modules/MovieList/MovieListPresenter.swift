@@ -16,18 +16,18 @@ protocol MovieListView: NSObjectProtocol {
     func showLoaderIndicator()
     func hideLoaderIndicator()
     func showError(with message: String?)
-    func updateDetailScreen(with movie: MovieListItem)
+    func updateDetailScreen(with movie: MovieItem)
 }
 
 class MovieListPresenter {
     
     weak private var listView : MovieListView?
 
-    private var searchResult: [MovieListItem]?
+    private var searchResult: [MovieItem]?
 
     private let movieService: MovieService = MovieClient()    
     
-    private var movies = [MovieListItem]() {
+    private var movies = [MovieItem]() {
         didSet {
             listView?.reloadData()
         }
@@ -59,7 +59,7 @@ class MovieListPresenter {
         listView?.showLoaderIndicator()
         movieService.movieList { (result, errorMessage) in
             self.listView?.hideLoaderIndicator()
-            guard let items = result as? [MovieListItem] else {
+            guard let items = result as? [MovieItem] else {
                 self.listView?.showError(with: errorMessage)
                 return
             }
@@ -82,7 +82,7 @@ class MovieListPresenter {
         listView?.reloadData()
     }
     
-    func movie(for index: Int) -> MovieListItem {
+    func movie(for index: Int) -> MovieItem {
         guard let searchData = searchResult, showSearchResult else {
             return movies[index]
         }

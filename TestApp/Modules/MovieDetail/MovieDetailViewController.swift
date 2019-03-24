@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
 import AVKit
 import AVFoundation
-import YoutubeDirectLinkExtractor
+
+enum ActivityIndicatorType {
+    case genres
+    case trailers
+}
 
 class MovieDetailViewController: UIViewController {
     
@@ -18,59 +21,90 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var trailerButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var genresActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var trailerActivityIndicator: UIActivityIndicatorView!
     
     let presenter = MovieDetailPresenter()
 
-    var movie: MovieListItem?
+    var movie: MovieItem? {
+        didSet {
+            guard isViewLoaded else { return } //handle set from segue
+            updateUI()
+        }
+    }
     
-    let movieService: MovieService = MovieClient()
-
+    private var hasMovie: Bool {
+        return movie != nil
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         updateUI()
-        
-//        movieService.movieDatail(for: movie) { (item, error) in
-//            guard let updatedMovie = item as? MovieListItem else { return }
-//            self.movie = updatedMovie
-//            self.genreLabel.text = updatedMovie.genres?.joined(separator: ", ")
-//        }
+        presenter.attachView(view: self)
+        presenter.loadDetail(for: movie)
     }
     
-    
     func updateUI() {
+        scrollView.isHidden = !hasMovie
+        
         titleLabel.text = movie?.title
         dateLabel.text = movie?.releaseData
         overviewLabel.text = movie?.overview
+        genreLabel.text = movie?.genres?.joined(separator: ", ")
         iconImageView.sd_setImage(with: movie?.imageURL, placeholderImage: #imageLiteral(resourceName: "bike"))
     }
     
+    //MARK: - Actions
     
     @IBAction func watchTrailerAction(_ sender: UIButton) {
-        //play first from list
-        
-        movieService.movieTrailers(for: movie!) { (items, error) in
-            guard let trailers = items as? [String], let firstTrailer = trailers.first else {
-                return
-            }
-
-            let y = YoutubeDirectLinkExtractor()
-            y.extractInfo(for: .urlString(firstTrailer), success: { info in
-                let player = AVPlayer(url: URL(string: info.highestQualityPlayableLink!)!)
-                let playerViewController = AVPlayerViewController()
-                playerViewController.player = player
-
-                self.present(playerViewController, animated: true) {
-                    playerViewController.player!.play()
-                }
-            }) { error in
-                print(error)
-            }
-
-        }
+        presenter.loadTrailers(for: movie)
     }
 
+}
+
+extension MovieDetailViewController: MovieDetailView {
+    
+    func setMovie(_ movie: MovieItem) {
+        self.movie = movie
+    }
+    
+    func showError(with message: String?) {
+        AlertController.showErrorAlert(with: message, target: self)
+    }
+    
+    func playTrailer(url: URL) {
+        let player = AVPlayer(url:url)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
+    
+    func showActivityIndicator(for type: ActivityIndicatorType) {
+        switch type {
+        case .genres:
+            genreLabel.isHidden = true
+            genresActivityIndicator.startAnimating()
+        case .trailers:
+            trailerButton.isEnabled = false
+            trailerActivityIndicator.startAnimating()
+        }
+    }
+    
+    func hideActivityIndicator(for type: ActivityIndicatorType) {
+        switch type {
+        case .genres:
+            genreLabel.isHidden = false
+            genresActivityIndicator.stopAnimating()
+        case .trailers:
+            trailerButton.isEnabled = true
+            trailerActivityIndicator.stopAnimating()
+        }
+    }
+        
 }

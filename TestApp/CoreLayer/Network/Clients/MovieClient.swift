@@ -17,22 +17,23 @@ struct MovieClient: MovieService {
                     completion(nil, error!)
                     return
                 }
-                var movies = [MovieListItem]()
+                var movies = [MovieItem]()
                 if let items = resp["results"] as? [[String: Any]] {
-                    items.forEach { movies.append(MovieListItem(data: $0)) }
+                    items.forEach { movies.append(MovieItem(data: $0)) }
                 }
                 completion(movies, nil)
             })
         }
     }
     
-    func movieDatail(for movie: MovieListItem, completion: @escaping RequestCompletion) {
+    func movieDatail(for movie: MovieItem, completion: @escaping RequestCompletion) {
         MoviewProvider.request(.movieDetail(movie.uniqueID!)) { (result) in
             ResponseHandler.handle(result: result, completion: { (dict, error) in
                 guard let resp = dict else {
                     completion(nil, error!)
                     return
                 }
+                //in our case need to load only genres
                 var mutatedMovie = movie
                 if let genresItems = resp["genres"] as? [[String: Any]] {
                     let genresNames = genresItems.map { $0["name"] as? String ?? ""}
@@ -43,7 +44,7 @@ struct MovieClient: MovieService {
         }
     }
     
-    func movieTrailers(for movie: MovieListItem, completion: @escaping RequestCompletion) {
+    func movieTrailers(for movie: MovieItem, completion: @escaping RequestCompletion) {
         MoviewProvider.request(.movieTrailer(movie.uniqueID!)) { (result) in
             ResponseHandler.handle(result: result, completion: { (dict, error) in
                 guard let resp = dict else {

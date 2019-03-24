@@ -112,11 +112,10 @@ extension MoviesListTableViewController: MovieListView {
         AlertController.showErrorAlert(with: message, target: self)
     }
     
-    func updateDetailScreen(with movie: MovieListItem) {
+    func updateDetailScreen(with movie: MovieItem) {
         guard let navBar = splitViewController?.viewControllers.last as? UINavigationController else { return }
         if let detailVC = navBar.viewControllers.first as? MovieDetailViewController {
             detailVC.movie = movie
-            detailVC.updateUI()
         }
     }
     
