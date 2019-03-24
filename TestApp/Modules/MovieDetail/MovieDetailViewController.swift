@@ -88,7 +88,6 @@ extension MovieDetailViewController: MovieDetailView {
     func showActivityIndicator(for type: ActivityIndicatorType) {
         switch type {
         case .genres:
-            genreLabel.isHidden = true
             genresActivityIndicator.startAnimating()
         case .trailers:
             trailerButton.isEnabled = false
@@ -99,7 +98,6 @@ extension MovieDetailViewController: MovieDetailView {
     func hideActivityIndicator(for type: ActivityIndicatorType) {
         switch type {
         case .genres:
-            genreLabel.isHidden = false
             genresActivityIndicator.stopAnimating()
         case .trailers:
             trailerButton.isEnabled = true

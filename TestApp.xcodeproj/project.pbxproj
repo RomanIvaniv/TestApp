@@ -23,6 +23,8 @@
 		3D82A6B02245209200C05ADB /* TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6AF2245209200C05ADB /* TestAppUITests.swift */; };
 		3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */; };
 		3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */; };
+		3D97D4DC2247F84400ACD361 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97D4DB2247F84400ACD361 /* Reachability.swift */; };
+		3D97D4DE2247FE2500ACD361 /* OfflineStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97D4DD2247FE2500ACD361 /* OfflineStorage.swift */; };
 		3DC519BE224787D200C9476F /* MovieSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC519BD224787D200C9476F /* MovieSplitViewController.swift */; };
 		3DC519C12247CD5400C9476F /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC519C02247CD5400C9476F /* MovieDetailPresenter.swift */; };
 		3DC519C32247DEF300C9476F /* iOS test code .pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3DC519C22247DEF200C9476F /* iOS test code .pdf */; };
@@ -71,6 +73,8 @@
 		3D82A6B12245209200C05ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewController.swift; sourceTree = "<group>"; };
 		3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		3D97D4DB2247F84400ACD361 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		3D97D4DD2247FE2500ACD361 /* OfflineStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineStorage.swift; sourceTree = "<group>"; };
 		3DC519BD224787D200C9476F /* MovieSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSplitViewController.swift; sourceTree = "<group>"; };
 		3DC519C02247CD5400C9476F /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		3DC519C22247DEF200C9476F /* iOS test code .pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS test code .pdf"; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				3D16D3DE2246272000875347 /* Network */,
+				3D97D4DF2247FE2C00ACD361 /* DataStorage */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			children = (
 				3D7E0F4B224656A000B8AAF2 /* NetworkAdapter.swift */,
 				3D16D3DC2246271A00875347 /* MovieDatabaseAPI.swift */,
+				3D97D4DB2247F84400ACD361 /* Reachability.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -287,6 +293,14 @@
 				3D7E0F5422469BD600B8AAF2 /* MovieItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3D97D4DF2247FE2C00ACD361 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				3D97D4DD2247FE2500ACD361 /* OfflineStorage.swift */,
+			);
+			path = DataStorage;
 			sourceTree = "<group>";
 		};
 		3DC519BF224787F100C9476F /* Navigation */ = {
@@ -521,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D97D4DC2247F84400ACD361 /* Reachability.swift in Sources */,
 				3D7E0F5122465E9400B8AAF2 /* MovieService.swift in Sources */,
 				3D7E0F5D224702A500B8AAF2 /* Extensions.swift in Sources */,
 				3D7E0F572246AF7E00B8AAF2 /* AlertController.swift in Sources */,
@@ -532,6 +547,7 @@
 				3D7E0F5322465E9D00B8AAF2 /* MovieClient.swift in Sources */,
 				3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */,
 				3D82A6902245209000C05ADB /* AppDelegate.swift in Sources */,
+				3D97D4DE2247FE2500ACD361 /* OfflineStorage.swift in Sources */,
 				3D16D3DD2246271A00875347 /* MovieDatabaseAPI.swift in Sources */,
 				3D7E0F5B2246FC1F00B8AAF2 /* MovieListPresenter.swift in Sources */,
 			);

@@ -11,16 +11,21 @@ import Foundation
 struct MovieClient: MovieService {
     
     func movieList(completion: @escaping RequestCompletion) {
+        guard Reachability.isConnectedToInternet() else {
+            let movies = OfflineStorage.loadMovies()
+            completion(movies, "No internet connections and offline data")
+            return
+        }
         MoviewProvider.request(.movieList) { (result) in
             ResponseHandler.handle(result: result, completion: { (dict, error) in
                 guard let resp = dict else {
                     completion(nil, error!)
                     return
                 }
-                var movies = [MovieItem]()
-                if let items = resp["results"] as? [[String: Any]] {
-                    items.forEach { movies.append(MovieItem(data: $0)) }
+                DispatchQueue.global(qos: .utility).async {
+                    OfflineStorage.save(data: resp)
                 }
+                let movies = MovieItem.createMovies(from: resp)
                 completion(movies, nil)
             })
         }

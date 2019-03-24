@@ -117,7 +117,6 @@
                                                 <state key="normal" title="Watch Trailer">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <state key="disabled" title=" "/>
                                                 <connections>
                                                     <action selector="watchTrailerAction:" destination="m6a-eW-Yde" eventType="touchUpInside" id="x1O-va-qFp"/>
                                                 </connections>
@@ -137,7 +136,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boM-Kh-gsD">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actions..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boM-Kh-gsD">
                                                                 <rect key="frame" x="0.0" y="18" width="390" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="SbR-gx-GIf"/>
@@ -201,7 +200,7 @@
                                                 </subviews>
                                             </stackView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="HHu-S8-wYz">
-                                                <rect key="frame" x="197" y="349.66666666666669" width="20" height="20"/>
+                                                <rect key="frame" x="362" y="349.66666666666669" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,9 +216,9 @@
                                             <constraint firstItem="tEC-2f-2Pz" firstAttribute="centerY" secondItem="boM-Kh-gsD" secondAttribute="centerY" id="JDx-xC-5vJ"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="trailing" secondItem="aju-8I-qza" secondAttribute="trailing" id="KL5-na-fOe"/>
                                             <constraint firstAttribute="trailing" secondItem="aju-8I-qza" secondAttribute="trailing" constant="12" id="ROL-iM-sjg"/>
-                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="centerY" secondItem="6Eo-Nb-YbO" secondAttribute="centerY" id="RTB-Kl-6PB"/>
                                             <constraint firstAttribute="trailing" secondItem="vPJ-s2-D0u" secondAttribute="trailing" constant="12" id="Vyd-Aa-Myt"/>
-                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="centerX" secondItem="6Eo-Nb-YbO" secondAttribute="centerX" id="fPj-oM-5bH"/>
+                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="centerY" secondItem="6Eo-Nb-YbO" secondAttribute="centerY" id="aWY-9V-Bur"/>
+                                            <constraint firstItem="HHu-S8-wYz" firstAttribute="trailing" secondItem="6Eo-Nb-YbO" secondAttribute="trailing" constant="-20" id="eUD-rN-Atn"/>
                                             <constraint firstItem="gCx-5t-5yg" firstAttribute="top" secondItem="7Wr-mO-Bkr" secondAttribute="top" id="l2f-eJ-DH6"/>
                                             <constraint firstItem="vPJ-s2-D0u" firstAttribute="top" secondItem="6Eo-Nb-YbO" secondAttribute="bottom" constant="15" id="mIy-Qu-9lU"/>
                                             <constraint firstItem="6Eo-Nb-YbO" firstAttribute="top" secondItem="aju-8I-qza" secondAttribute="bottom" constant="8" id="wfe-Ns-eP7"/>
