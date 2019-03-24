@@ -89,10 +89,6 @@ class MovieListPresenter {
         return searchData[index]
     }
     
-    func downloadMovies() {
-        
-    }
-    
     //MARK: - Private
     
     private func updateDetailControllerIfNeeded() {

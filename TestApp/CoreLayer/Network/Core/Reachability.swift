@@ -6,10 +6,7 @@
 //  Copyright © 2019 Roman Ivaniv. All rights reserved.
 //
 
-import Foundation
-
 import Alamofire
-import Foundation
 
 struct Reachability {
     

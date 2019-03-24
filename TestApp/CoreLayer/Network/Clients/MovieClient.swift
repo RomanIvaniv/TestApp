@@ -59,6 +59,7 @@ struct MovieClient: MovieService {
                 var trailers = [String]()
                 if let genresItems = resp["results"] as? [[String: Any]] {
                     genresItems.forEach {
+                        // TODO: - Refactoring needed
                         if let key = $0["key"] as? String, let site =  $0["site"] as? String, site == "YouTube" {
                             let baseYoutube = "https://www.youtube.com/watch?v="
                             let path = baseYoutube + key
