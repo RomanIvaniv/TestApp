@@ -19,8 +19,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    
+    let presenter = MovieDetailPresenter()
 
-    var movie: MovieListItem!
+    var movie: MovieListItem?
     
     let movieService: MovieService = MovieClient()
 
@@ -29,51 +31,46 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         
-        setupUI()
+        updateUI()
         
-        movieService.movieDatail(for: movie) { (item, error) in
-            guard let updatedMovie = item as? MovieListItem else { return }
-            self.movie = updatedMovie
-            self.genreLabel.text = updatedMovie.genres?.joined(separator: ", ")
-        }
+//        movieService.movieDatail(for: movie) { (item, error) in
+//            guard let updatedMovie = item as? MovieListItem else { return }
+//            self.movie = updatedMovie
+//            self.genreLabel.text = updatedMovie.genres?.joined(separator: ", ")
+//        }
     }
     
     
-    private func setupUI() {
-        titleLabel.text = movie.title
-        dateLabel.text = movie.releaseData
-        overviewLabel.text = movie.overview
-        iconImageView.sd_setImage(with: movie.imageURL, placeholderImage: #imageLiteral(resourceName: "movie_placeholder"))
+    func updateUI() {
+        titleLabel.text = movie?.title
+        dateLabel.text = movie?.releaseData
+        overviewLabel.text = movie?.overview
+        iconImageView.sd_setImage(with: movie?.imageURL, placeholderImage: #imageLiteral(resourceName: "bike"))
     }
     
     
     @IBAction func watchTrailerAction(_ sender: UIButton) {
         //play first from list
         
-        movieService.movieTrailers(for: movie) { (items, error) in
+        movieService.movieTrailers(for: movie!) { (items, error) in
             guard let trailers = items as? [String], let firstTrailer = trailers.first else {
                 return
             }
-        
+
             let y = YoutubeDirectLinkExtractor()
             y.extractInfo(for: .urlString(firstTrailer), success: { info in
                 let player = AVPlayer(url: URL(string: info.highestQualityPlayableLink!)!)
                 let playerViewController = AVPlayerViewController()
                 playerViewController.player = player
-                
+
                 self.present(playerViewController, animated: true) {
                     playerViewController.player!.play()
                 }
             }) { error in
                 print(error)
             }
-            
-        }
-        
 
-        
+        }
     }
-    
- 
 
 }

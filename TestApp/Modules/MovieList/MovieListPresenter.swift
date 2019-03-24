@@ -6,6 +6,7 @@
 //  Copyright © 2019 Roman Ivaniv. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 protocol MovieListView: NSObjectProtocol {
@@ -15,21 +16,24 @@ protocol MovieListView: NSObjectProtocol {
     func showLoaderIndicator()
     func hideLoaderIndicator()
     func showError(with message: String?)
+    func updateDetailScreen(with movie: MovieListItem)
 }
 
 class MovieListPresenter {
     
-    private let movieService: MovieService = MovieClient()
-
     weak private var listView : MovieListView?
-    
+
     private var searchResult: [MovieListItem]?
+
+    private let movieService: MovieService = MovieClient()    
     
     private var movies = [MovieListItem]() {
         didSet {
             listView?.reloadData()
         }
     }
+    
+    //MARK: - Getters
     
     private var showSearchResult: Bool {
         guard let text = listView?.searchedText else {
@@ -45,6 +49,7 @@ class MovieListPresenter {
         return searchData.count
     }
     
+    //MARK: - Public
     
     func attachView(view: MovieListView) {
         listView = view
@@ -59,6 +64,7 @@ class MovieListPresenter {
                 return
             }
             self.movies = items
+            self.updateDetailControllerIfNeeded()
         }        
     }
     
@@ -81,6 +87,15 @@ class MovieListPresenter {
             return movies[index]
         }
         return searchData[index]
+    }
+    
+    //MARK: - Private
+    
+    private func updateDetailControllerIfNeeded() {
+        if UIDevice.current.userInterfaceIdiom == .pad, let firstMovie = movies.first {
+            //show first movie on detail screen as default
+            listView?.updateDetailScreen(with: firstMovie)
+        }
     }
     
 }

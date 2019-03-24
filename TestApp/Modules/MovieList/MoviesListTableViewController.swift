@@ -43,9 +43,15 @@ class MoviesListTableViewController: UITableViewController {
         
         cell.tag = indexPath.row
         cell.textLabel?.text = movie.title
-        cell.imageView?.sd_setImage(with: movie.imageURL, placeholderImage: #imageLiteral(resourceName: "movie_placeholder"))
+        cell.imageView?.sd_setImage(with: movie.imageURL, placeholderImage: #imageLiteral(resourceName: "bike"))
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            updateDetailScreen(with: presenter.movie(for: indexPath.row))
+        }
     }
     
     // MARK: - Navigation
@@ -57,6 +63,10 @@ class MoviesListTableViewController: UITableViewController {
         }
     }
    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return UIDevice.current.userInterfaceIdiom != .pad
+    }
+    
 }
 
 extension MoviesListTableViewController: UISearchBarDelegate {
@@ -81,6 +91,7 @@ extension MoviesListTableViewController: UISearchBarDelegate {
 }
 
 extension MoviesListTableViewController: MovieListView {
+    
     var searchedText: String? {
         return headerSearchBar.text
     }
@@ -99,6 +110,14 @@ extension MoviesListTableViewController: MovieListView {
     
     func showError(with message: String?) {
         AlertController.showErrorAlert(with: message, target: self)
+    }
+    
+    func updateDetailScreen(with movie: MovieListItem) {
+        guard let navBar = splitViewController?.viewControllers.last as? UINavigationController else { return }
+        if let detailVC = navBar.viewControllers.first as? MovieDetailViewController {
+            detailVC.movie = movie
+            detailVC.updateUI()
+        }
     }
     
 }

@@ -23,6 +23,8 @@
 		3D82A6B02245209200C05ADB /* TestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6AF2245209200C05ADB /* TestAppUITests.swift */; };
 		3D82A6BE2245211A00C05ADB /* MoviesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */; };
 		3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */; };
+		3DC519BE224787D200C9476F /* MovieSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC519BD224787D200C9476F /* MovieSplitViewController.swift */; };
+		3DC519C12247CD5400C9476F /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC519C02247CD5400C9476F /* MovieDetailPresenter.swift */; };
 		3E7A9CE7702F80CD1D7DBD52 /* Pods_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83072AB50DB251620F8FFDD7 /* Pods_TestApp.framework */; };
 		798275AEA801BE5C3ACE738A /* Pods_TestAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F317CF60FF7B1CD943436B4B /* Pods_TestAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		3D82A6B12245209200C05ADB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D82A6BD2245211A00C05ADB /* MoviesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListTableViewController.swift; sourceTree = "<group>"; };
 		3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		3DC519BD224787D200C9476F /* MovieSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSplitViewController.swift; sourceTree = "<group>"; };
+		3DC519C02247CD5400C9476F /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		63C32D6C3CDDF68E801B841B /* Pods-TestAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestAppUITests/Pods-TestAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		771D15A4E625D93DA3B35569 /* Pods-TestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestApp/Pods-TestApp.release.xcconfig"; sourceTree = "<group>"; };
 		83072AB50DB251620F8FFDD7 /* Pods_TestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,7 @@
 				3D7E0F5422469BD600B8AAF2 /* MovieListItem.swift */,
 				3D7E0F582246FBEF00B8AAF2 /* MovieList */,
 				3D7E0F592246FBFE00B8AAF2 /* MovieDetail */,
+				3DC519BF224787F100C9476F /* Navigation */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 		3D7E0F592246FBFE00B8AAF2 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
+				3DC519C02247CD5400C9476F /* MovieDetailPresenter.swift */,
 				3D82A6C422452C5A00C05ADB /* MovieDetailViewController.swift */,
 			);
 			path = MovieDetail;
@@ -270,6 +276,14 @@
 				3D82A6B12245209200C05ADB /* Info.plist */,
 			);
 			path = TestAppUITests;
+			sourceTree = "<group>";
+		};
+		3DC519BF224787F100C9476F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				3DC519BD224787D200C9476F /* MovieSplitViewController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		CBCC81C74D47AAC2D3C06E70 /* Frameworks */ = {
@@ -499,6 +513,8 @@
 				3D7E0F5D224702A500B8AAF2 /* Extensions.swift in Sources */,
 				3D7E0F572246AF7E00B8AAF2 /* AlertController.swift in Sources */,
 				3D7E0F5522469BD600B8AAF2 /* MovieListItem.swift in Sources */,
+				3DC519C12247CD5400C9476F /* MovieDetailPresenter.swift in Sources */,
+				3DC519BE224787D200C9476F /* MovieSplitViewController.swift in Sources */,
 				3D7E0F4C224656A000B8AAF2 /* NetworkAdapter.swift in Sources */,
 				3D82A6C522452C5A00C05ADB /* MovieDetailViewController.swift in Sources */,
 				3D7E0F5322465E9D00B8AAF2 /* MovieClient.swift in Sources */,
