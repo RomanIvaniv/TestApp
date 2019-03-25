@@ -116,6 +116,7 @@ extension MoviesListTableViewController: MovieListView {
         guard let navBar = splitViewController?.viewControllers.last as? UINavigationController else { return }
         if let detailVC = navBar.viewControllers.first as? MovieDetailViewController {
             detailVC.movie = movie
+            detailVC.presenter.loadDetail(for: movie)
         }
     }
     
