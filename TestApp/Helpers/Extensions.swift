@@ -9,8 +9,10 @@
 import UIKit
 
 extension UISearchBar {
+    
     func deactivate(animated: Bool = true) {
         resignFirstResponder()
         setShowsCancelButton(false, animated: animated)
     }
+    
 }

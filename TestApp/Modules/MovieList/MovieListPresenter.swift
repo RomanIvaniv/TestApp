@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 protocol MovieListView: NSObjectProtocol {
+    
     var searchedText: String? { get }
     
     func reloadData()
@@ -17,6 +18,7 @@ protocol MovieListView: NSObjectProtocol {
     func hideLoaderIndicator()
     func showError(with message: String?)
     func updateDetailScreen(with movie: MovieItem)
+    
 }
 
 class MovieListPresenter {

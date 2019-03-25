@@ -18,15 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="WSq-RD-Zpu" userLabel="HeaderContainer">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="WSq-RD-Zpu" userLabel="HeaderContainer">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <searchBar contentMode="redraw" placeholder="Search..." translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-Ki-0gc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="54" id="IU2-Z7-YKm"/>
-                                    </constraints>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                     <connections>
                                         <outlet property="delegate" destination="niE-pL-XMu" id="UIN-x0-4g6"/>
@@ -46,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="82" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z31-tN-kwA" id="jGB-O2-pAL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DyF-bL-z2w">
@@ -258,6 +255,19 @@
                                                 <include reference="55T-3y-sme"/>
                                                 <include reference="Ak6-mq-k7k"/>
                                                 <include reference="Gga-xr-4gO"/>
+                                                <include reference="wfe-Ns-eP7"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="55T-3y-sme"/>
+                                                <include reference="h2B-SQ-Ujv"/>
+                                                <include reference="7y3-iJ-bPi"/>
+                                                <include reference="Ak6-mq-k7k"/>
+                                                <include reference="Cjg-Xe-7fL"/>
+                                                <include reference="Gga-xr-4gO"/>
+                                                <include reference="Zmg-wn-kt8"/>
+                                                <include reference="cfb-25-xYE"/>
                                                 <include reference="wfe-Ns-eP7"/>
                                             </mask>
                                         </variation>
