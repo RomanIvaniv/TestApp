@@ -12,6 +12,6 @@ For current tasks i didn't use dependency injection framework, just to not overl
 ***OPTIONAL TASK 2: ​create a search functionality in the catalog page by filtering
 content downloaded:*** I added search bar into tableView header + dataSource filtering logic.
 
-***OPTIONAL TASK 3:​ support both iOS device types (iPad and iPhone):*** I decided to use UISplitViewController to provide best user expeciance for both device types. For iPhone i support landscape and portraint orientations. The layout is similar to provided mockups. For iPad as master screen i show movie list and for detail screen - movie detail. First movie from the list i show as default on detail screen.
+***OPTIONAL TASK 3:​ support both iOS device types (iPad and iPhone):*** I decided to use UISplitViewController to provide best user expeciance for both device types. For iPhone i support landscape and portraint orientations. The layout is similar to provided mockups, but for some sort of devices UI can be not accurate (like iPhone XR (in landscape), need to spend more time to handle it). For iPad as master screen i show movie list and for detail screen - movie detail. First movie from the list i show as default on detail screen.
 
 ***OPTIONAL TASK 4:​ create at least one unit test!*** Added few unit tests for different response structure. 
